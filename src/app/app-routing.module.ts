@@ -6,6 +6,11 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
+  {
+    path: 'cre-project',
+    loadChildren: () => import('./cre-project/cre-project.module').then( m => m.CreProjectPageModule)
+  },
+ 
 
     // { path: '', redirectTo: 'home', pathMatch: 'full' },
     // { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},

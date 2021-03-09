@@ -1,18 +1,67 @@
 <ion-header [translucent]="true">
+    
     <ion-toolbar>
-        <ion-title mode="ios">
-            Tab 1
+        <ion-title mode="md">
+            <ion-row>
+                <ion-col>
+                    Tab 1
+                </ion-col>
+                <ion-col class="ion-text-right">
+                    <ion-icon name="add-outline" [routerLink]="['/cre-project']"></ion-icon>
+                </ion-col>
+            </ion-row>
         </ion-title>
     </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-    <!-- <ion-card-content>
-        Keep close to Nature's heart... and break clear away, once in awhile, and climb a mountain or spend a week in the woods. Wash your spirit clean.
-    </ion-card-content>
-    <div>
-        <ion-button (click)="OnClick()" expand="full" fill="outline">Outline + Full</ion-button>
-    </div> -->
-    <canvas id="canvas-chart"></canvas>
-</ion-content>
+    <ion-content class="">
+        <!-- <ion-card-content>
+            Keep close to Nature's heart... and break clear away, once in awhile, and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+        <div>
+            <ion-button (click)="OnClick()" expand="full" fill="outline">Outline + Full</ion-button>
+        </div> -->
+
+        <ion-grid [fixed]="true">
+            <ion-row class="padding content-status mt-1">
+                <ion-col size="1">
+                    <ion-icon name="radio-button-on" class="online"></ion-icon>
+                  </ion-col>
+                  <ion-col size="11">
+                      Project name
+                  </ion-col>
+                  
+                  
+            </ion-row>
+
+
+            <ion-row class="content-chart mt-3">
+                <ion-col>
+                    <div>
+                        <h3>ความร้อน/นาที</h3>
+                        <hr>
+                    </div>
+                    <div class="ion-text-center">
+                      <h3>ความร้อน</h3>
+                    </div>
+                  </ion-col>
+                <canvas id="canvas-chart" width="auto" height="500px"></canvas>
+            </ion-row>
+
+            <ion-row class="content-hotlimit mt-3">
+                <ion-col class="ion-text-right">
+                    <ion-icon name="settings-sharp"></ion-icon>
+                    <div class="ion-text-left">
+                        <h3>อุณภูมิลิมิต</h3>
+                        <hr>
+                    </div>
+                    <div class="ion-text-center">
+                      <h1>5 องศา</h1>
+                    </div>
+                  </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-content>
+
+
 

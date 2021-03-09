@@ -6,8 +6,36 @@ ion-header {
     }
 }
 
-ion-content {
-    ion-card-content {
-        margin-top: 50%;
-    }
+h3{
+    margin-top: 0px;
+}
+.content-chart{
+    background-color: rgb(39, 39, 39);
+    // border: 1px solid #ffffff;
+    border-radius: 20px;
+    padding:5%;
+
+}
+.content-hotlimit{
+    background-color: rgb(39, 39, 39);
+    // border: 1px solid #ffffff;
+    border-radius: 20px;
+    padding:1%;
+    
+}
+.header{
+    border-bottom:1px solid #ffffff;
+}
+.content-status{
+    background-color: rgb(39, 39, 39);
+    // border: 1px solid #ffffff;
+    border-radius: 50px;
+    padding:1%;
+   
+}
+ion-icon {
+    --ionicon-stroke-width: 100px;
+  }
+.online{
+    color:green;
 }

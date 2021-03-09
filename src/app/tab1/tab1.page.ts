@@ -1,6 +1,8 @@
+import { CreProjectPage } from './../cre-project/cre-project.page';
 import { Component, ɵSWITCH_TEMPLATE_REF_FACTORY__POST_R3__ } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Chart } from 'chart.js';
+
 
 @Component({
   selector: 'app-tab1',
@@ -64,7 +66,7 @@ OnClick(){
       }
     })
     }
-
+  
     
 }
 
