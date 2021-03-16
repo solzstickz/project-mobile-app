@@ -1,38 +1,47 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-back-button></ion-back-button>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="primary">
+          <ion-button (click)="dismissRegister()">
+            <ion-icon name="close"></ion-icon>
+          </ion-button>
         </ion-buttons>
-        <ion-title>Register</ion-title>
-    </ion-toolbar>
-</ion-header>
-
-<ion-content>
-    <form>
-        <ion-item lines="full" class="my-2">
-            <ion-label position="floating">First name</ion-label>
-            <ion-input type="text" required></ion-input>
-        </ion-item>
-
-        <ion-item lines="full" class="my-2">
-            <ion-label position="floating">Last name</ion-label>
-            <ion-input type="text" required></ion-input>
-        </ion-item>
-
-        <ion-item lines="full" class="my-2">
-            <ion-label position="floating">Email</ion-label>
-            <ion-input type="text" required></ion-input>
-        </ion-item>
-
-        <ion-item lines="full" class="my-2">
-            <ion-label position="floating">Password</ion-label>
-            <ion-input type="password" required></ion-input>
-        </ion-item>
-
-        <ion-row>
-            <ion-col>
-                <ion-button type="submit" color="danger" expand="block">Sign Up</ion-button>
-            </ion-col>
-        </ion-row>
-    </form>
-</ion-content>
+      </ion-toolbar>
+  </ion-header>
+  
+  
+  <ion-content padding>
+  
+  <ion-text text-center color="primary">
+      <h1>Create an Account</h1>
+  </ion-text>
+  
+  <form #form="ngForm" (ngSubmit)="register(form)" method="post">
+    <ion-item>
+        <ion-label color="primary" position="floating">First Name</ion-label>
+        <ion-input ngModel name="firstName"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label color="primary" position="floating">Last Name</ion-label>
+      <ion-input ngModel name="lastName"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label color="primary" position="floating">Email</ion-label>
+      <ion-input type="email" ngModel name="email"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label color="primary" position="floating">Password</ion-label>
+      <ion-input type="password" ngModel name="password"></ion-input>
+    </ion-item>
+  
+    <ion-button type="submit" expand="block" color="primary" [disabled]="form.invalid">Register now</ion-button>
+  </form>
+  </ion-content>
+  
+  <ion-footer>
+    <ion-toolbar>
+        <ion-title text-center color="primary" (click)="dismissRegister()">Already have a account?</ion-title>
+      </ion-toolbar>
+  </ion-footer>

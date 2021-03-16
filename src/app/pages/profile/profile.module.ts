@@ -5,10 +5,10 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { Tab4PageRoutingModule } from './tab4-routing.module';
+import { profilePageRoutingModule } from './profile-routing.module';
 
-import { Tab4Page } from './tab4.page';
-import { ContactModule} from'../contact/contact.module';
+import { profilePage } from './profile.page';
+import { ContactModule} from'../../contact/contact.module';
 
 
 @NgModule({
@@ -17,8 +17,8 @@ import { ContactModule} from'../contact/contact.module';
     FormsModule,
     IonicModule,
     ContactModule,
-    Tab4PageRoutingModule
+    profilePageRoutingModule
   ],
-  declarations: [Tab4Page]
+  declarations: [profilePage]
 })
-export class Tab4PageModule {}
+export class profilePageModule {}

@@ -1,4 +1,4 @@
-import { CreProjectPage } from './../cre-project/cre-project.page';
+import { CreProjectPage } from '../../cre-project/cre-project.page';
 import { Component, ɵSWITCH_TEMPLATE_REF_FACTORY__POST_R3__ } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Chart } from 'chart.js';
@@ -6,10 +6,10 @@ import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss']
+  templateUrl: 'dashboard.page.html',
+  styleUrls: ['dashboard.page.scss']
 })
-export class Tab1Page {
+export class dashboardPage {
   ngOnInit() {
     this.mycharts();
   }

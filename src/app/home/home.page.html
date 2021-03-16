@@ -12,21 +12,21 @@
     <ion-grid>
         <ion-row>
             <ion-col align-self-center>
-                <form>
+                <form #form="ngForm" (ngSubmit)="login(form)">
                     <ion-item lines="full">
                         <ion-label position="floating">Email</ion-label>
-                        <ion-input type="text" required></ion-input>
+                        <ion-input ngModel type="email" name="email" required></ion-input>
                     </ion-item>
             
                     <ion-item lines="full">
                         <ion-label position="floating">Password</ion-label>
-                        <ion-input type="password" required></ion-input>
+                        <ion-input ngModel type="password" name="password" required></ion-input>
                     </ion-item>
             
                     <ion-row>
                         <ion-col>
-                            <ion-button type="submit" color="danger" expand="block">Sign In</ion-button>
-                            <a [routerLink]="['/forgot-password']" class="small-text">Forgot Password?</a>
+                            <ion-button type="submit" color="danger" [disabled]="form.invalid" expand="block">Login</ion-button>
+                            <a (click)="forgetpassword()" class="small-text">Forgot Password?</a>
                         </ion-col>
                     </ion-row>
                 </form>
@@ -34,7 +34,7 @@
 
                 <span class="already">Already a user?</span>
 
-                <ion-button [routerLink]="['/register']" expand="block" color="primary">Register</ion-button>
+                <ion-button (click)="register()" expand="block" color="primary">Register</ion-button>
             </ion-col>
         </ion-row>
     </ion-grid>
