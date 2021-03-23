@@ -1,7 +1,9 @@
-import { CreProjectPage } from '../../cre-project/cre-project.page';
-import { Component, ɵSWITCH_TEMPLATE_REF_FACTORY__POST_R3__ } from '@angular/core';
+import { CreProjectPage } from '../dashboard/cre-project/cre-project.page';
+import { Component } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Chart } from 'chart.js';
+import { ModalController, MenuController, NavController } from '@ionic/angular';
+
 
 
 @Component({
@@ -10,6 +12,13 @@ import { Chart } from 'chart.js';
   styleUrls: ['dashboard.page.scss']
 })
 export class dashboardPage {
+
+  constructor(
+    private modalController: ModalController,
+    private navCtrl: NavController,
+    private menu: MenuController,
+  ) {}
+
   ngOnInit() {
     this.mycharts();
   }
@@ -47,9 +56,9 @@ export class dashboardPage {
       }
     });
   }
-  constructor() {}
 
-OnClick(){ 
+
+  OnClick(){ 
     Swal.fire({
       title: 'Do you want to save the changes?',
       showDenyButton: false,
@@ -68,6 +77,12 @@ OnClick(){
     }
   
     
+    async creproject() {
+      const CreProjectPageModule = await this.modalController.create({
+        component: CreProjectPage,
+      });
+      return await CreProjectPageModule.present();
+    }
 }
 
 

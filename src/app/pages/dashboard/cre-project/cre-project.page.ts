@@ -1,7 +1,8 @@
 import { PickerController } from '@ionic/angular';
 import { PickerOptions } from '@ionic/core';
 import { Component, OnInit } from '@angular/core';
-
+import { ModalController, MenuController, NavController } from '@ionic/angular';
+import { __values } from 'tslib';
 
 
 @Component({
@@ -12,9 +13,25 @@ import { Component, OnInit } from '@angular/core';
 export class CreProjectPage  {
   framework = '' ;
   selector = ['',''];
-  constructor(private pickerCtrl: PickerController) { 
+  weight: number = 37;
+  constructor(
+    private pickerCtrl: PickerController,
+    private modalController: ModalController,
+    private navCtrl: NavController,
+    private menu: MenuController,
+    ) { 
+     
 
   }
+  ngOnInit() {
+    //Some data that came from the main page
+    
+}
+    // Dismiss Register Modal
+    dismisscreproject() {
+      this.modalController.dismiss();
+    }
+
   async showadvancePicker(){
     let opts: PickerOptions = {
       cssClass: 'academy-picker',
@@ -141,6 +158,11 @@ export class CreProjectPage  {
           ]
         });
   }
+
+  getvalue(){
+   
+  }
+
   // async showBasicPicker(){
   //   let opts: PickerOptions = {
   //     buttons: [
