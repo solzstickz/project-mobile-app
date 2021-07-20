@@ -1,4 +1,6 @@
 ion-header {
+    border-bottom: 1px solid gray;
+    
     ion-toolber {
         ion-title {
             color: white;
@@ -9,33 +11,72 @@ ion-header {
 h3{
     margin-top: 0px;
 }
+ion-content{
+    --background: #000000;
+}
+
+ion-content {
+    --ion-item-background:#00000000;  
+    --ion-color-step-250: #313131;
+   
+}
+
 .content-chart{
-    background-color: rgb(39, 39, 39);
+    background-color: rgba(128, 128, 128, 0.25);
     // border: 1px solid #ffffff;
     border-radius: 20px;
     padding:5%;
 
 }
 .content-hotlimit{
-    background-color: rgb(39, 39, 39);
+    background-color: rgba(128, 128, 128, 0.25);
     // border: 1px solid #ffffff;
     border-radius: 20px;
     padding:1%;
     
 }
-.header{
-    border-bottom:1px solid #ffffff;
-}
+
 .content-status{
-    background-color: rgb(39, 39, 39);
+    background-color: rgba(128, 128, 128, 0.25);
     // border: 1px solid #ffffff;
     border-radius: 50px;
     padding:1%;
    
 }
-ion-icon {
+.Add {
     --ionicon-stroke-width: 100px;
   }
 .online{
     color:green;
 }
+
+.progress-wrapper {
+    position: relative;
+    margin: 20px auto;
+    font-size: 20px;
+  }
+  .current {
+    position: absolute;
+    color: #bbb;
+    font-weight: 20;
+    line-height: 1;
+    
+  }
+  
+  round-progress {
+    margin: auto;
+  }
+  .countdown{
+      font-size: 70px;
+  }
+  .countdown-btn{
+    font-size: 75px;
+  }
+  
+.cancel{
+color:red;
+width: 20px;
+height: 20px;
+}
+
+

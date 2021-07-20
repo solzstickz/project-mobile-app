@@ -1,23 +1,20 @@
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { profilePageRoutingModule } from './profile-routing.module';
+import { SettProjectPageRoutingModule } from './sett-project-routing.module';
 
-import { profilePage } from './profile.page';
-
-
+import { SettProjectPage } from './sett-project.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    profilePageRoutingModule
+    SettProjectPageRoutingModule
   ],
-  declarations: [profilePage]
+  declarations: [SettProjectPage]
 })
-export class profilePageModule {}
+export class SettProjectPageModule {}

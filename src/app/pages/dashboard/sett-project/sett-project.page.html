@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-row>
+      <ion-col size="4">
+       
+      </ion-col>
+      <ion-col size="4">
+        <div class="text-center">
+          <ion-label>Setting</ion-label>
+        </div>
+      </ion-col>
+      <ion-col size="4" (click)="dismisscreproject()">
+        <div class="text-end">
+          <ion-icon name="close" color="danger" class="close"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="tier">
+  <!-- <img src="" class="img-fluid"> -->
+  <ion-row>
+    <ion-col size="12" class="test">
+
+      <ion-item>
+        <ion-label>Project Name</ion-label>
+        <ion-input placeholder="Project Name" value="{{projectname}}"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Limit temperature:</ion-label>
+        <ion-input placeholder="Limit temperature" class="text-center" value="{{temp_limit}}"></ion-input>
+        <ion-label>°C</ion-label>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>Start temperature:</ion-label>
+        <ion-input placeholder="Start temperature" class="text-center" value="{{temp_start}}"></ion-input>
+        <ion-label>°C</ion-label>
+      </ion-item>
+    </ion-col>
+    
+    <!-- <ion-col size="12">
+      <ion-item (click)="showadvancePicker()">
+        
+        <ion-label>Hours: </ion-label>
+        <ion-label color="primary"> {{ selector[0] }}</ion-label>
+        
+        <ion-label>min: </ion-label>
+        <ion-label color="primary"> {{ selector[1] }}</ion-label>
+
+       
+      </ion-item>
+    </ion-col> -->
+    
+<!-- <ion-col size="12">
+  <ion-item>
+    <ion-label>Object weight</ion-label>
+    <ion-input placeholder="weight" class="text-center" value="{{ weight }}"></ion-input>
+    <ion-button color="primary" expand="" >Get weight</ion-button>
+  </ion-item>
+</ion-col> -->
+
+
+
+
+
+<ion-col size="12">
+  <ion-button color="success" expand="block">Save Setting</ion-button>
+</ion-col>
+  </ion-row>
+</ion-content>

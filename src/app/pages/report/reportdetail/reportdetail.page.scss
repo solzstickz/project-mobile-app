@@ -1,25 +1,40 @@
 ion-header {
     border-bottom: 1px solid gray;
-}
-.icon{
-    font-size: 50px;
+    
+    ion-toolber {
+        ion-title {
+            color: white;
+        }
+    }
 }
 
-.bg-content{   
-    background-color:#313131;
+h3{
+    margin-top: 0px;
+}
+ion-item{
+    border-radius: 20px;
+}
+
+
+.content-chart {
+    background-color: #1c1c1d;
     // border: 1px solid #ffffff;
     border-radius: 20px;
-   
-    border: 2px solid gray;
- 
+    padding:5%;
+
 }
 ion-content {
     --ion-item-background:#00000000;  
     --ion-color-step-250: #313131;
    
 }
-ion-content{
-    --background: #000000;
+
+
+body{
+    --ion-background-color: #000000;
+}
+ion-item{
+    background-color: black;
 }
 
 
@@ -40,7 +55,7 @@ ion-content{
     width: 6px;
     height: 100%;
     margin-left: -3px;
-    background: rgb(80, 80, 80);
+    background: #00000000;  
     background: -moz-linear-gradient( top, rgba(80, 80, 80, 0) 0%, rgb(80, 80, 80) 8%, rgb(80, 80, 80) 92%, rgba(80, 80, 80, 0) 100%);
     background: -webkit-gradient( linear, left top, left bottom, color-stop(0%, rgba(30, 87, 153, 1)), color-stop(100%, rgba(125, 185, 232, 1)));
     background: -webkit-linear-gradient( top, rgba(80, 80, 80, 0) 0%, rgb(80, 80, 80) 8%, rgb(80, 80, 80) 92%, rgba(80, 80, 80, 0) 100%);
@@ -155,7 +170,7 @@ ion-content{
     display: inline;
     line-height: 1em;
     font-size: 0.66666em;
-    color: rgb(250, 80, 80);
+    color: #ff1800;
     vertical-align: middle;
   }
   

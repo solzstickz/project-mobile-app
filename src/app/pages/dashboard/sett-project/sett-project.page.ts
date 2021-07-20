@@ -1,155 +1,107 @@
+import { element } from 'protractor';
+import { async } from '@angular/core/testing';
 import { DatapassService } from './../../../datapass.service';
-import { dashboardPage } from './../dashboard.page';
-import { title } from 'process';
-import { PickerController, AlertController, NavController } from '@ionic/angular';
+import { PickerController } from '@ionic/angular';
 import { PickerOptions } from '@ionic/core';
-import { Component, OnInit, ViewChild, Input, ElementRef } from '@angular/core';
-import { ModalController, MenuController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { ModalController, MenuController, NavController } from '@ionic/angular';
 import { __values } from 'tslib';
-import Swal from 'sweetalert2';
-import { Router,NavigationExtras } from '@angular/router'
 import { HttpClient } from '@angular/common/http';
 
-
-
 @Component({
-  selector: 'app-cre-project',
-  templateUrl: './cre-project.page.html',
-  styleUrls: ['./cre-project.page.scss'],
+  selector: 'app-sett-project',
+  templateUrl: './sett-project.page.html',
+  styleUrls: ['./sett-project.page.scss'],
 })
-export class CreProjectPage  {
-
-  @ViewChild('input_projectname') s_projectname:ElementRef; 
-  @ViewChild('input_hours') s_hours:ElementRef; 
-  @ViewChild('input_min') s_min:ElementRef; 
-  @ViewChild('input_weight') s_weight:ElementRef;
-  @ViewChild('input_temp_limit') s_temp_limit:ElementRef;
-  @ViewChild('input_temp_start') s_temp_start:ElementRef;
-
- 
-
-
-  projectname:any;
-  selector = ['',''];
-  hours:Number = 0;
-  weight:any;
-  temp_limit:any;
-  temp_start:any;
+export class SettProjectPage {
+  framework = '' ;
+  projectid:any;
   apiprojectid:any;
-  projectid=[];
-  
- 
-
+  check_projectid:Number;
+  projectname:any;
+  selector : ['',''];
+  weight:any;
+  tmp:any;
+  creproject:any[];  
   constructor(
     private pickerCtrl: PickerController,
     private modalController: ModalController,
-    public alertCtrl: AlertController,
     private navCtrl: NavController,
-    private menu: MenuController,
     private DatapassService:DatapassService,
     private http: HttpClient
     ) { 
+     
+       (async() => {
+         async function getprojectid() {
+           const url = `https://jookcafe.com/backend/api_report.php`;
+           const response = await fetch(url);
+           const result = await response.json();
+           return result;
+          
+         }
+         const projectid = await getprojectid();
+         projectid.forEach(element => {
+           console.log(`${element.projectname}`)
+         });
 
-    
+
+         const array=[];
+         for (let i = 0; i < projectid.length; i++) {
+          array.push(projectid[i])
+          this.creproject = array;
+         
+         }
+
+         const output = this.creproject.map(({projectid,projectname}) =>
+         ({projectid, 
+          projectname})
+         )
+          console.log(output)
+       })();
+
+
+
+
+
+      // this.projectid = this.DatapassService.creprojectid;
+      
+
+
+      // const my_url = 'https://jookcafe.com/backend/api_creproject.php';
+      // this.http.get(my_url).subscribe(data => {
+      //   // this.apiprojectid[0].id
+      //   this.check_projectid = parseInt(data[0].id)
+      //   console.log("projectid  ="+this.projectid)
+      //   console.log("checkprojectid  ="+this.check_projectid)
+       
+  
+      //   if(this.projectid = this.check_projectid){
+      //     console.log("Check Pass")
+      //     this.creproject = this.DatapassService.creproject
+      //     console.log(this.creproject)
+          
+      //   }else{
+      //     console.log("Check fail projectid = " +this.check_projectid
+                      
+      //     )
+          
+      //   }
+      // })
+      
 
   }
   ngOnInit() {
     //Some data that came from the main page
-    this.getprojectid();
-
+    
 }
 
-async getprojectid(){
-    const url = `http://jookcafe.com/backend/api_creproject.php`;
-    const response = await fetch(url);
-    const result = await response.json();
-    this.apiprojectid = result;
-    var projectidstring;
-    var projectid;
-    for (let i = 0; i < this.apiprojectid.length; i++) {
-    // projectid.push(this.apiprojectid[i].id);
-    projectidstring = this.apiprojectid[i].id;
-    projectid = parseInt(projectidstring)
-    projectid = (projectid + 1);
-      console.log("get project id = "+projectid)
-      // console.log(typeof(projectid))
-      this.DatapassService.creprojectid = projectid
-    }
-  }
-  
-
-  cre_project(){
-  
-    var projectname = this.s_projectname.nativeElement.value
-    var hours = this.selector[0]
-    var min =this.selector[1]
-    var weight_string = this.s_weight.nativeElement.value
-    var temp_limit_string = this.s_temp_limit.nativeElement.value
-    var temp_start_string = this.s_temp_start.nativeElement.value
-    Swal.fire({
-      icon: 'success',
-      title: 'เริ่มสร้างโปรเจ็กต์:' + projectname,
-      showConfirmButton: false,
-      timer: 1500,
-
-    })
-    // this.modalController.dismiss();
-    
-    // console.log(this.s_projectname.nativeElement.value);
-    // console.log(this.selector[0]);
-    // console.log(this.selector[1]);
-    // console.log(this.s_weight.nativeElement.value);
-    // console.log(this.s_temp_limit.nativeElement.value);
-
-
-
-
-   var projectname = projectname;
-   var sec_hours = parseInt(hours);
-   var sec_min = parseInt(min);
-   var weight = parseInt(weight_string);
-   var temp_limit = parseInt(temp_limit_string);
-   var temp_start = parseInt(temp_start_string);
-   var sum_min = (sec_hours * 60)+(sec_min);
-   var sec = (sec_hours * 3600)+(sec_min * 60);
-  //  console.log(sec)
-  //  console.log(typeof(sec_hours));
-  //  console.log(sec_hours)
-  //  var sec:number = ((hours)*(3600))
-  var todayDate = new Date().toISOString().slice(0, 10);
-  // console.log("Date Creproject"+todayDate);
- 
-
-  
-  
-
-    var cre_project = {
-      projectid:this.DatapassService.creprojectid,
-      projectname:projectname,
-      hours:sec_hours,
-      min:sec_min,
-      sum_min:sum_min,
-      sec: sec,
-      weight:weight,
-      temp_limit:temp_limit,
-      temp_start:temp_start,
-      date:todayDate
-    }
-
-
-
-    console.log("Creproject Value"+JSON.stringify(cre_project))
-
-    this.DatapassService.creproject = cre_project;
-    this.navCtrl.navigateForward('app/tabs/dashboard');
-  
-  }
 
     // Dismiss Register Modal
     dismisscreproject() {
-      // this.modalController.dismiss();
-      this.navCtrl.navigateForward('app/tabs/dashboard');
+      this.modalController.dismiss();
     }
+
+  
 
   async showadvancePicker(){
     let opts: PickerOptions = {
@@ -277,6 +229,7 @@ async getprojectid(){
             Hours.options[Hours.selectedIndex].value,
             Min.options[Min.selectedIndex].value
           ]
+          
         });
   }
 
@@ -311,7 +264,7 @@ async getprojectid(){
   //   picker.present();
   //   picker.onDidDismiss().then(async data => {
   //     let col = await picker.getColumn('framework');
-  //     console.log('col: ', col);
+      // console.log('col: ', col);
   //     this.framework = col.options[col.selectedIndex].text;
   //   })
   // }

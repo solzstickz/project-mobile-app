@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { EnvService } from './env.service';
+import { DatapassService } from './datapass.service';
 
-describe('EnvService', () => {
-  let service: EnvService;
+describe('DatapassService', () => {
+  let service: DatapassService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(EnvService);
+    service = TestBed.inject(DatapassService);
   });
 
   it('should be created', () => {

@@ -1,23 +1,20 @@
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { profilePageRoutingModule } from './profile-routing.module';
+import { ReportdetailPageRoutingModule } from './reportdetail-routing.module';
 
-import { profilePage } from './profile.page';
-
-
+import { ReportdetailPage } from './reportdetail.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    profilePageRoutingModule
+    ReportdetailPageRoutingModule
   ],
-  declarations: [profilePage]
+  declarations: [ReportdetailPage]
 })
-export class profilePageModule {}
+export class ReportdetailPageModule {}

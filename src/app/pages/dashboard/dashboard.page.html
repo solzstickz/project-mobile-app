@@ -1,67 +1,142 @@
 <ion-header [translucent]="true">
-    
     <ion-toolbar>
         <ion-title mode="md">
-            <ion-row>
+            <ion-row class="header">
                 <ion-col>
-                    Tab 1
+                    <ion-title size="large" class="h2">Dashboard</ion-title>
                 </ion-col>
-                <ion-col class="ion-text-right" (click)="creproject()">
-                    <ion-icon name="add-outline"></ion-icon>
+                <ion-col class="ion-text-right" (click)="goto_creproject()">
+                    <ion-icon class="Add" name="add-outline"></ion-icon>
                 </ion-col>
             </ion-row>
         </ion-title>
     </ion-toolbar>
 </ion-header>
 
-    <ion-content class="">
-        <!-- <ion-card-content>
+<ion-content class="">
+    <!-- <ion-card-content>
             Keep close to Nature's heart... and break clear away, once in awhile, and climb a mountain or spend a week in the woods. Wash your spirit clean.
         </ion-card-content>
         <div>
             <ion-button (click)="OnClick()" expand="full" fill="outline">Outline + Full</ion-button>
         </div> -->
 
-        <ion-grid [fixed]="true">
-            <ion-row class="padding content-status mt-1">
-                <ion-col size="1">
-                    <ion-icon name="radio-button-on" class="online"></ion-icon>
-                  </ion-col>
-                  <ion-col size="11">
-                      Project name
-                  </ion-col>
-                  
-                  
-            </ion-row>
+    <ion-grid [fixed]="true">
+        <ion-row class="padding content-status mt-1">
+            <ion-col size="5">
+                <!-- <ion-icon name="radio-button-on" class="online"></ion-icon> -->
+             
+                <ion-item>
+                    <ion-label class="status">{{status_checked}}</ion-label>
+                    <ion-toggle color="success" [value]="checked" (ionChange)="Clicked()"></ion-toggle>
+                </ion-item>
+            </ion-col>
+            <ion-col size="5" class="d-flex align-items-center">
+                <ion-label class="h5">{{projectname}}</ion-label>
+            </ion-col>
+            <ion-col size="1" class="d-flex align-items-center">
+                <ion-icon name="trash-bin" class="cancel" (click)="del_project()"></ion-icon>
+            </ion-col>
 
 
-            <ion-row class="content-chart mt-3">
-                <ion-col>
-                    <div>
-                        <h3>ความร้อน/นาที</h3>
-                        <hr>
-                    </div>
+        </ion-row>
+
+        <ion-row class="content-chart mt-3">
+            <ion-col class="ion-text-right">
+                <ion-icon name="settings-sharp" (click)="settproject()"></ion-icon>
+                <div class="ion-text-left">
+                    <h3>Countdown Time</h3>
+                    <hr>
+                </div>
+                <div class="ion-text-center">
                     <div class="ion-text-center">
-                      <h3>ความร้อน</h3>
+                        <countdown class="countdown" #countdown [config]="{leftTime: timeData,notify: [ 2, 5 ]}"></countdown>
                     </div>
-                  </ion-col>
-                <canvas id="canvas-chart" width="auto" height="500px"></canvas>
-            </ion-row>
+                    <!-- <div class="ion-text-center">
+                        <ion-icon class="countdown-btn" name="play-circle-outline" (click)="countdown.resume()">
+                        </ion-icon>
+                        <ion-icon class="countdown-btn" name="pause-circle-outline" (click)="countdown.pause()">
+                        </ion-icon>
+                        <ion-icon class="countdown-btn" name="refresh-circle-outline" (click)="countdown.restart()">
+                        </ion-icon>
+                    </div> -->
+                </div>
+            </ion-col>
+        </ion-row>
 
-            <ion-row class="content-hotlimit mt-3">
-                <ion-col class="ion-text-right">
-                    <ion-icon name="settings-sharp"></ion-icon>
-                    <div class="ion-text-left">
-                        <h3>อุณภูมิลิมิต</h3>
-                        <hr>
-                    </div>
-                    <div class="ion-text-center">
-                      <h1>5 องศา</h1>
-                    </div>
-                  </ion-col>
-            </ion-row>
-        </ion-grid>
-    </ion-content>
+        <ion-row class="content-chart mt-3">
+            <ion-col size="12">
+                <div class="ion-text-left">
+                    <h3>Temperature</h3>
+                    <hr>
+                </div>
+            </ion-col>
+            
+            <ion-col class="text-center">
+                <circle-progress
+                [percent]=temp
+                [radius]="100"
+                [outerStrokeWidth]="8"
+                [innerStrokeWidth]="4"
+                [outerStrokeColor]=temp_line
+                [innerStrokeColor]="'#FFFFFF'"
+                [animation]="true"
+                [animationDuration]="300"
+                [showSubtitle]="true"
+                [titleFontSize]="51"
+                [subtitleFontSize]="20"
+                [unitsFontSize]="25"
+                [subtitle]="'องศาเซลเซียส'"
+                [units]="''"
+                [space]="'-5'"
+                [titleColor]="'#ffffff'"
+                [unitsColor]="'#ffffff'"
 
+              ></circle-progress>
+            </ion-col>
+        </ion-row>
 
+        <ion-row class="content-chart mt-3">
+            <ion-col class="ion-text-right">
+                <!-- <ion-icon name="settings-sharp"></ion-icon> -->
+                <div class="ion-text-left">
+                    <h3>Chart Temp.</h3>
+                    <hr>
+                </div>
+            </ion-col>
+            <canvas id="canvas-chart" width="auto" height="600px"></canvas>
+        </ion-row>
 
+        <!-- <ion-row class="content-hotlimit mt-3">
+            <ion-col class="ion-text-right">
+                <ion-icon name="settings-sharp"></ion-icon>
+                <div class="ion-text-left">
+                    <h3>อุณภูมิลิมิต</h3>
+                    <hr>
+                </div>
+              
+                    <div class="progress-wrapper">
+                        <round-progress
+                          [current]="current"
+                          [max]="max"
+                          [color]="gradient ? 'url(#gradient)' : color"
+                          [background]="background"
+                          [radius]="radius"
+                          [stroke]="stroke"
+                          [semicircle]="semicircle"
+                          [rounded]="rounded"
+                          [clockwise]="clockwise"
+                          [responsive]="responsive"
+                          [duration]="duration"
+                          [animation]="animation"
+                          [animationDelay]="animationDelay"
+                        ></round-progress>
+                        <div class="current" [ngStyle]="getOverlayStyle()">temperature.{{ current }}°C</div>
+                      
+                        <div class="current" [ngStyle]="getOverlayStyle2()">Limit. {{ max }}°C</div>
+                      </div>    
+            </ion-col>
+        </ion-row> -->
+
+    </ion-grid>
+</ion-content>
